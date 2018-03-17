@@ -1,0 +1,16 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl acacia_barrel
+Ka 0.000000 0.000000 0.000000
+Kd 0.384314 0.141176 0.039216
+Ks 0.330000 0.330000 0.330000
+map_Kd barrel/acacia_barrel.png
+
+newmtl acacia_cap
+Ka 0.000000 0.000000 0.000000
+Kd 0.403922 0.192157 0.121569
+Ks 0.330000 0.330000 0.330000
+map_Kd barrel/acacia_cap.png
+
