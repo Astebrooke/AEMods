@@ -15,3 +15,4 @@ aedeco = {}
 dofile(MOD_PATH .. "/" .. "barrels.lua")
 dofile(MOD_PATH .. "/" .. "columns.lua")
 dofile(MOD_PATH .. "/" .. "fortifications.lua")
+dofile(MOD_PATH .. "/" .. "banners.lua")

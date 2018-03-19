@@ -26,6 +26,7 @@ minetest.register_craft({
 		{"imps:pestle","imps:pestle"},
 	},	
 })
+
 --[[	**************************
 		
 		Recipes for tool items
@@ -33,11 +34,7 @@ minetest.register_craft({
 		**************************	]]
 
 -- Tools used for interaction with imps
-minetest.register_craft({
-	type = "shapeless",
-	output = "imps:chisel 1",
-	recipe = {"aebase:marble_fragment", "default:steel_ingot"},
-})
+
 
 --[[	**************************
 		

@@ -1,0 +1,10 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Carpet_Pattern_Squares_Multi
+Ka 0.000000 0.000000 0.000000
+Kd 0.541176 0.505882 0.396078
+Ks 0.330000 0.330000 0.330000
+map_Kd aedeco_banner_halfpoint/Carpet_Pattern_Squares_Multi.jpg
+

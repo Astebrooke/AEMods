@@ -1,5 +1,7 @@
 -- Columns and other similar decorations, by -=Astebrooke Enterprises=-
-
+--[[
+		These models created with RubenWardy's NodeBox Editor
+]]
 minetest.register_node("aedeco:column_granite_base", {
 	tiles = {
 		"aebase_granite.png",

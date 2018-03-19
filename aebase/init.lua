@@ -15,6 +15,7 @@ aebase = {}
 dofile(MOD_PATH .. "/" .. "nodes.lua")
 dofile(MOD_PATH .. "/" .. "craftnodes.lua")
 dofile(MOD_PATH .. "/" .. "items.lua")
+dofile(MOD_PATH .. "/" .. "tools.lua")
 dofile(MOD_PATH .. "/" .. "crafting.lua")
 
 -- Call worldgen for new blocks
