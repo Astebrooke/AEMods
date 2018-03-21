@@ -6,7 +6,7 @@
 local tapestry_cbox = {
 	type = "fixed",
 	fixed = {
-		{ -0.5, 0.4, 0.49, 0.5, 0.5, 0.5 },
+		{ -0.5, 0.45, -0.5, 0.5, 0.5, 0.5 },
 	}
 }
 minetest.register_node("aedeco:banner_point", {
@@ -17,9 +17,16 @@ minetest.register_node("aedeco:banner_point", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
@@ -39,9 +46,16 @@ minetest.register_node("aedeco:banner_halfpoint", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
@@ -61,9 +75,16 @@ minetest.register_node("aedeco:banner_quarterpoint", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
@@ -83,9 +104,16 @@ minetest.register_node("aedeco:banner_roundpoint", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
@@ -105,9 +133,16 @@ minetest.register_node("aedeco:banner_taper", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
@@ -127,9 +162,16 @@ minetest.register_node("aedeco:banner_taperskinny", {
 		"wool_white.png",
 	},
 	paramtype = "light",
-	paramtype2 = "facedir",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	walkable = false,
-	groups = {oddly_breakable_by_hand = 3, flammable = 3},
+	groups = {oddly_breakable_by_hand = 3, flammable = 3, ud_param2_colorable = 1},
+	on_construct = unifieddyes.on_construct,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
+	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	selection_box = tapestry_cbox,
 })
 minetest.register_craft({
