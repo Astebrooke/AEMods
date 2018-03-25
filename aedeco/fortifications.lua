@@ -15,7 +15,7 @@ minetest.register_node("aedeco:portcullis_receptacle", {
 })
 minetest.register_craft({
 	type = "shaped",
-	output = "aedeco:portcullis_receptacle 1",
+	output = "aedeco:portcullis_receptacle 5",
 	recipe = {
 		{"default:stonebrick","default:stonebrick","default:stonebrick"},
 		{"default:stonebrick","                  ","default:stonebrick"},

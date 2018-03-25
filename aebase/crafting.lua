@@ -59,7 +59,7 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	type = "shapeless",
-	output = "aebase:binding_paste 1",
+	output = "aebase:binding_paste 6",
 	recipe = {"group:leaves","group:leaves","group:leaves","aebase:pestle"},
 	replacements = {
 		{"aebase:pestle","aebase:pestle"}

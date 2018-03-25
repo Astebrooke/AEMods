@@ -48,3 +48,9 @@ minetest.register_craft({
 	output = "imps:binding_agent",
 	recipe = "imps:binding_paste",
 })
+
+minetest.register_craft({
+	type = "cooking",
+	output = "imps:infused_steel",
+	recipe = "imps:infused_iron_lump",
+})

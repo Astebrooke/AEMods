@@ -12,12 +12,14 @@ minetest.register_node("aebase:granite_in_stone", {
 	is_ground_content = true,
 	groups = {cracky=2},
 	drop = {
-			max_items = 4,
+			max_items = 6,
 			items = {
 					{items = {'aebase:granite_fragment'}},
 					{items = {'aebase:granite_fragment'}, rarity = 2},
 					{items = {'aebase:granite_fragment'}, rarity = 3},
-					{items = {'aebase:granite_fragment'}, rarity = 4}
+					{items = {'aebase:granite_fragment'}, rarity = 4},
+					{items = {'aebase:granite_fragment'}, rarity = 5},
+					{items = {'aebase:granite_fragment'}, rarity = 6},
 				}
 			},
 	sounds = default.node_sound_stone_defaults(),
@@ -29,12 +31,14 @@ minetest.register_node("aebase:speck_marble_in_stone", {
 	is_ground_content = true,
 	groups = {cracky=1},
 	drop = {
-			max_items = 4,
+			max_items = 6,
 			items = {
 					{items = {'aebase:marble_fragment'}},
 					{items = {'aebase:marble_fragment'}, rarity = 2},
 					{items = {'aebase:marble_fragment'}, rarity = 3},
-					{items = {'aebase:marble_fragment'}, rarity = 4}
+					{items = {'aebase:marble_fragment'}, rarity = 4},
+					{items = {'aebase:marble_fragment'}, rarity = 5},
+					{items = {'aebase:marble_fragment'}, rarity = 6},
 				}
 			},
 	sounds = default.node_sound_stone_defaults(),
