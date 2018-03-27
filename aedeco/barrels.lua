@@ -27,8 +27,8 @@ minetest.register_craft({
 	type = "shaped",
 	output = "aedeco:barrel_acacia 1",
 	recipe = {
-		{"default:acacia_wood",  "doors:trapdoor"   ,"default:acacia_wood"},
-		{"default:acacia_wood",  "              "   ,"default:acacia_wood"},
+		{"default:acacia_wood","doors:trapdoor"     ,"default:acacia_wood"},
+		{"default:acacia_wood",""                   ,"default:acacia_wood"},
 		{"default:acacia_wood","default:acacia_wood","default:acacia_wood"},
 	}
 })
@@ -54,7 +54,7 @@ minetest.register_craft({
 	output = "aedeco:barrel_apple 1",
 	recipe = {
 		{"default:wood","doors:trapdoor","default:wood"},
-		{"default:wood","              ","default:wood"},
+		{"default:wood",""              ,"default:wood"},
 		{"default:wood","default:wood"  ,"default:wood"},
 	}
 })
@@ -79,8 +79,8 @@ minetest.register_craft({
 	type = "shaped",
 	output = "aedeco:barrel_aspen 1",
 	recipe = {
-		{"default:aspen_wood",   "doors:trapdoor"   ,"default:aspen_wood"},
-		{"default:aspen_wood",   "              "   ,"default:aspen_wood"},
+		{"default:aspen_wood","doors:trapdoor"      ,"default:aspen_wood"},
+		{"default:aspen_wood",""                    ,"default:aspen_wood"},
 		{"default:aspen_wood","default:aspen_wood"  ,"default:aspen_wood"},
 	}
 })
@@ -105,8 +105,8 @@ minetest.register_craft({
 	type = "shaped",
 	output = "aedeco:barrel_jungle 1",
 	recipe = {
-		{"default:junglewood",  "doors:trapdoor"  ,"default:junglewood"},
-		{"default:junglewood",  "              "  ,"default:junglewood"},
+		{"default:junglewood","doors:trapdoor"    ,"default:junglewood"},
+		{"default:junglewood",""                  ,"default:junglewood"},
 		{"default:junglewood","default:junglewood","default:junglewood"},
 	}
 })
@@ -132,7 +132,7 @@ minetest.register_craft({
 	output = "aedeco:barrel_pine 1",
 	recipe = {
 		{"default:pine_wood","doors:trapdoor"   ,"default:pine_wood"},
-		{"default:pine_wood","              "   ,"default:pine_wood"},
+		{"default:pine_wood",""                 ,"default:pine_wood"},
 		{"default:pine_wood","default:pine_wood","default:pine_wood"},
 	}
 })

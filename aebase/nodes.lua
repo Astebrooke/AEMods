@@ -10,7 +10,7 @@ minetest.register_node("aebase:granite_in_stone", {
 	tiles = {"default_stone.png^granite_in_stone.png"},
 	paramtype2 = "facedir",
 	is_ground_content = true,
-	groups = {cracky=2},
+	groups = {cracky=2, level=1, not_in_craft_guide = 1},
 	drop = {
 			max_items = 6,
 			items = {
@@ -29,7 +29,7 @@ minetest.register_node("aebase:speck_marble_in_stone", {
 	tiles = {"default_stone.png^marble_in_stone.png"},
 	paramtype2 = "facedir",
 	is_ground_content = true,
-	groups = {cracky=1},
+	groups = {cracky=1, level=2, not_in_craft_guide = 1},
 	drop = {
 			max_items = 6,
 			items = {
@@ -64,6 +64,8 @@ minetest.register_node("aebase:granite_stairs", {
 		"aebase_granite.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_stairs_inv.png",
+	wield_image = "aebase_granite_stairs_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -89,6 +91,8 @@ minetest.register_node("aebase:granite_stairs_corner_in", {
 		"aebase_granite.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_stairs_ci_inv.png",
+	wield_image = "aebase_granite_stairs_ci_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -117,6 +121,8 @@ minetest.register_node("aebase:granite_stairs_corner_out", {
 		"aebase_granite.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_stairs_co_inv.png",
+	wield_image = "aebase_granite_stairs_co_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -219,28 +225,7 @@ minetest.register_node("aebase:granite_panel", {
 		}
 	}
 })
-minetest.register_node("aebase:granite_laminate", {
-	description = "Granite Laminate",
-	tiles = {
-		"aebase_granite.png",
-		"aebase_granite.png",
-		"aebase_granite.png",
-		"aebase_granite.png",
-		"aebase_granite.png",
-		"aebase_granite.png"
-	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.5, 0.5}, -- NodeBox1
-		}
-	}
-})
+
 
 
 -- Flecked Granite Brick nodes
@@ -262,6 +247,8 @@ minetest.register_node("aebase:granite_brick_stairs", {
 		"granite_bricks.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_brick_stairs_inv.png",
+	wield_image = "aebase_granite_brick_stairs_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -287,6 +274,8 @@ minetest.register_node("aebase:granite_brick_stairs_corner_in", {
 		"granite_bricks.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_brick_stairs_ci_inv.png",
+	wield_image = "aebase_granite_brick_stairs_ci_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -315,6 +304,8 @@ minetest.register_node("aebase:granite_brick_stairs_corner_out", {
 		"granite_bricks.png"
 	},
 	drawtype = "nodebox",
+	inventory_image = "aebase_granite_brick_stairs_co_inv.png",
+	wield_image = "aebase_granite_brick_stairs_co_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -417,28 +408,7 @@ minetest.register_node("aebase:granite_brick_panel", {
 		}
 	}
 })
-minetest.register_node("aebase:granite_brick_laminate", {
-	description = "Granite Brick Laminate",
-	tiles = {
-		"granite_bricks.png",
-		"granite_bricks.png",
-		"granite_bricks.png",
-		"granite_bricks.png",
-		"granite_bricks.png",
-		"granite_bricks.png"
-	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.5, 0.5}, -- NodeBox1
-		}
-	}
-})
+
 
 
 -- Speckled Marble nodes
@@ -448,4 +418,14 @@ minetest.register_node("aebase:marble", {
 	paramtype2 = "facedir",
 	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
+})
+
+
+-- Demonstration Backdrop (for displaying objects or nodes in a purely black environment)
+minetest.register_node("aebase:backdrop_black", {
+	description = "A solid backdrop for images",
+	tiles = {"aebase_backdrop.png"},
+	drawtype = "normal",
+	paramtype = "light",
+	groups = {oddly_breakable_by_hand = 3, not_in_craft_guide = 1},
 })

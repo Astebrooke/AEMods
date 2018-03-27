@@ -17,7 +17,7 @@ minetest.register_node("imps:base_pedestal", {
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	sounds = default.node_sound_stone_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = pedestal_cbox,
@@ -34,7 +34,7 @@ minetest.register_node("imps:star_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -73,7 +73,7 @@ minetest.register_node("imps:blankped", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -111,7 +111,7 @@ minetest.register_node("imps:air_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -149,7 +149,7 @@ minetest.register_node("imps:earth_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -187,7 +187,7 @@ minetest.register_node("imps:fire_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -225,7 +225,7 @@ minetest.register_node("imps:nature_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -263,7 +263,7 @@ minetest.register_node("imps:spirit_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -301,7 +301,7 @@ minetest.register_node("imps:void_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),
@@ -339,7 +339,7 @@ minetest.register_node("imps:water_pedestal", {
 		"tilestylized.png",
 		"tilestylized.png"
 	},
-	groups = {cracky = 1},
+	groups = {cracky = 1, not_in_craft_guide = 1},
 	drawtype = "nodebox",
 	paramtype = "light",
 	sounds = default.node_sound_stone_defaults(),

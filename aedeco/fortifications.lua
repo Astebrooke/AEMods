@@ -18,7 +18,7 @@ minetest.register_craft({
 	output = "aedeco:portcullis_receptacle 5",
 	recipe = {
 		{"default:stonebrick","default:stonebrick","default:stonebrick"},
-		{"default:stonebrick","                  ","default:stonebrick"},
+		{"default:stonebrick",""                  ,"default:stonebrick"},
 		{"default:stonebrick","default:stonebrick","default:stonebrick"},
 	},
 })

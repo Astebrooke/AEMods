@@ -16,7 +16,7 @@ for _ , riftType in pairs(rifts) do
   	drawtype = "plantlike",
     use_texture_alpha = not (riftType == "water"),
   	tiles = {"imps_rift_" .. riftType .. ".png"},  -- todo: more pngs for diff rift types
-  	groups = {imps_rift = 1},
+  	groups = {imps_rift = 1, not_in_craft_guide = 1},
 	paramtype = "light",
   	sunlight_propagates = true,
     is_ground_content = false,

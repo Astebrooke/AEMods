@@ -8,37 +8,37 @@
 minetest.register_craftitem("imps:crystal_air", {
 	description = "a cloudy crystal", -- Essence used for air recipes and rituals
 	inventory_image = "orb_air.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_earth", {
 	description = "an earthen crystal", -- Essence used for earth recipes and rituals
 	inventory_image = "orb_earth.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_fire", {
 	description = "a blazing crystal", -- Essence used for fire recipes and rituals
 	inventory_image = "orb_fire.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_nature", {
 	description = "a lively crystal", -- Essence used for recipes and rituals of nature
 	inventory_image = "orb_nature.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_void", {
 	description = "an extremely empty crystal", -- Essence used for recipes and rituals of the Void
 	inventory_image = "orb_void.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_spirit", {
 	description = "an ephemeral crystal", -- Essence used for spirit recipes and rituals
 	inventory_image = "orb_spirit.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_water", {
 	description = "a shimmering crystal", -- Essence used for water recipes and rituals
 	inventory_image = "orb_water.png",
-	groups = {impessence = 1},
+	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 
 -- Imp-related craftitem Upgrades
@@ -62,6 +62,7 @@ minetest.register_craftitem("imps:binding_agent", {
 minetest.register_craftitem("imps:infused_iron_lump", {
 	description = "Odd Iron Lump",
 	inventory_image = "default_iron_lump.png^bubble.png",		-- ^imps_infused_ore.png (replace ^bubble.png when this exists)
+	groups = {not_in_craft_guide = 1},
 	stack_max = 99,
 })
 
