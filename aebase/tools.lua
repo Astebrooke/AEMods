@@ -24,37 +24,47 @@ minetest.register_tool("aebase:chisel", {
 	end
 	
 	local used = false
-
-	if node.name == "aebase:granite" then
-		minetest.swap_node(pos, {name = "aebase:granite_stairs_corner_in"})
-		used = true
-	elseif node.name == "aebase:granite_stairs_corner_in" then
-		minetest.swap_node(pos, {name = "aebase:granite_stairs"})
-		used = true
-	elseif node.name == "aebase:granite_stairs" then
-		minetest.swap_node(pos, {name = "aebase:granite_stairs_corner_out"})
-		used = true
-	elseif node.name == "aebase:granite_stairs_corner_out" then
-		minetest.swap_node(pos, {name = "aebase:granite_slab"})
-		used = true
-	elseif node.name == "aebase:granite_bricks" then
-		minetest.swap_node(pos, {name = "aebase:granite_brick_stairs_corner_in"})
-		used = true
-	elseif node.name == "aebase:granite_brick_stairs_corner_in" then
-		minetest.swap_node(pos, {name = "aebase:granite_brick_stairs"})
-		used = true
-	elseif node.name == "aebase:granite_brick_stairs" then
-		minetest.swap_node(pos, {name = "aebase:granite_brick_stairs_corner_out"})
-		used = true
-	elseif node.name == "aebase:granite_brick_stairs_corner_out" then
-		minetest.swap_node(pos, {name = "aebase:granite_brick_slab"})
-		used = true
-	elseif node.name == "imps:starmarble" then
-		minetest.swap_node(pos, {name = "imps:base_pedestal"})
-		used = true
-	elseif node.name == "imps:stylstarmarble" then
-		minetest.swap_node(pos, {name = "imps:star_pedestal"})
-		used = true
+	
+	if minetest.get_modpath("moreblocks") then
+		if node.name == "imps:starmarble" then
+			minetest.swap_node(pos, {name = "imps:base_pedestal"})
+			used = true
+		elseif node.name == "imps:stylstarmarble" then
+			minetest.swap_node(pos, {name = "imps:star_pedestal"})
+			used = true
+		end
+	else
+		if node.name == "aebase:granite" then
+			minetest.swap_node(pos, {name = "aebase:granite_stairs_corner_in"})
+			used = true
+		elseif node.name == "aebase:granite_stairs_corner_in" then
+			minetest.swap_node(pos, {name = "aebase:granite_stairs"})
+			used = true
+		elseif node.name == "aebase:granite_stairs" then
+			minetest.swap_node(pos, {name = "aebase:granite_stairs_corner_out"})
+			used = true
+		elseif node.name == "aebase:granite_stairs_corner_out" then
+			minetest.swap_node(pos, {name = "aebase:granite_halfslab"})
+			used = true
+		elseif node.name == "aebase:granite_bricks" then
+			minetest.swap_node(pos, {name = "aebase:granite_brick_stairs_corner_in"})
+			used = true
+		elseif node.name == "aebase:granite_brick_stairs_corner_in" then
+			minetest.swap_node(pos, {name = "aebase:granite_brick_stairs"})
+			used = true
+		elseif node.name == "aebase:granite_brick_stairs" then
+			minetest.swap_node(pos, {name = "aebase:granite_brick_stairs_corner_out"})
+			used = true
+		elseif node.name == "aebase:granite_brick_stairs_corner_out" then
+			minetest.swap_node(pos, {name = "aebase:granite_brick_halfslab"})
+			used = true
+		elseif node.name == "imps:starmarble" then
+			minetest.swap_node(pos, {name = "imps:base_pedestal"})
+			used = true
+		elseif node.name == "imps:stylstarmarble" then
+			minetest.swap_node(pos, {name = "imps:star_pedestal"})
+			used = true
+		end
 	end
 	
 	if used then

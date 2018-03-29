@@ -19,7 +19,7 @@ minetest.register_craft({
 	},
 })
 minetest.register_node("aedeco:banner_halfpoint", {
-	description = "a moderately long banner",
+	description = "a round-tipped banner with three points",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_halfpoint.obj",
 	tiles = {
@@ -50,7 +50,7 @@ minetest.register_craft({
 	},
 })
 minetest.register_node("aedeco:banner_roundpoint", {
-	description = "a moderately long banner",
+	description = "a round-tipped banner with a centered point",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_roundpoint.obj",
 	tiles = {
@@ -81,7 +81,7 @@ minetest.register_craft({
 	},
 })
 minetest.register_node("aedeco:banner_quarterpoint", {
-	description = "a moderately long banner",
+	description = "a round-tipped banner with some material removed",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_quarterpoint.obj",
 	tiles = {
@@ -112,7 +112,7 @@ minetest.register_craft({
 	},
 })
 minetest.register_node("aedeco:banner_point", {
-	description = "a moderately long banner",
+	description = "a banner inspired by a wide knight's shield",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_point.obj",
 	tiles = {
@@ -134,7 +134,7 @@ minetest.register_node("aedeco:banner_point", {
 	selection_box = tapestry_cbox,
 })
 minetest.register_node("aedeco:banner_taper", {
-	description = "a moderately long banner",
+	description = "a pennant tapering to a point",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_taper.obj",
 	tiles = {
@@ -165,7 +165,7 @@ minetest.register_craft({
 	},
 })
 minetest.register_node("aedeco:banner_taperskinny", {
-	description = "a moderately long banner",
+	description = "a pennant tapering sharply to a point",
 	drawtype = "mesh",
 	mesh = "aedeco_banner_taperskinny.obj",
 	tiles = {
