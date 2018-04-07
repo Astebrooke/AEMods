@@ -1,25 +1,26 @@
 local MOD_NAME = minetest.get_current_modname() or "imps";
 
 --[[	**************************
-		
+
 		Tools used in progression
-		
+
 		**************************	]]
 
-	
+
 
 --[[	**************************
-		
+
 		Diviner for extracting imps essence
-		
+
 		**************************	]]
 
-minetest.register_tool("imps:diviner1", {
+minetest.register_tool("imps:crystallizer1", {
 	description = "Experimental Rift-Interaction Device", -- Used to craft pedestals and other specially-designed blocks
-	inventory_image = "aebase_chisel.png^granfrag.png", --"imps_diviner.png", (use this once created)
-	
-	--[[ The function that determines whether or not the block is a base block for creating the pedestals and,
-	if they are, creates the pedestal in place of the original block.]]
+	inventory_image = "imps_crystallizer.png",
+	wield_scale = {x=1.5,y=1.5,z=0.4},
+
+	--[[ The function that determines whether or not the node is a rift and,
+	if it is, crystallizes the rift.]]
 	on_place = function(itemstack, user, pointed_thing)
 
 	if not pointed_thing.under then
@@ -32,7 +33,7 @@ minetest.register_tool("imps:diviner1", {
 	if not node then
 		return itemstack
 	end
-	
+
 	local used = false
 
 	local nodeDef = minetest.registered_nodes[node.name]
@@ -43,7 +44,7 @@ minetest.register_tool("imps:diviner1", {
        minetest.add_item(pos, shardStack)
 	end
 
-	
+
 	if used then
 		itemstack:add_wear(65536 / 249)
 	end
@@ -51,9 +52,12 @@ minetest.register_tool("imps:diviner1", {
 	end
 })
 
--- This is just a placeholder recipe for now
 minetest.register_craft({
-	type = "shapeless",
-	output = "imps:diviner1 1",
-	recipe = {"aebase:marble_fragment", "imps:infused_steel"},
+	type = "shaped",
+	output = "imps:crystallizer1 1",
+	recipe = {
+		{"imps:infused_steel",""                    ,"imps:infused_steel"},
+		{""                  ,"default:mese_crystal",""                  },
+		{""                  ,"aebase:marble_fragment",""                  },
+	},
 })

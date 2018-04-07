@@ -1,7 +1,7 @@
 -- Flecked Granite recipes
 minetest.register_craft({
 	type = "shaped",
-	output = "aebase:granite 1",
+	output = "aebase:granite 4",
 	recipe = {
 		{"aebase:granite_fragment","aebase:granite_fragment","aebase:granite_fragment"},
 		{"aebase:granite_fragment","group:aebinder"         ,"aebase:granite_fragment"},
@@ -93,7 +93,7 @@ end
 -- Speckled Marble recipes
 minetest.register_craft({
 	type = "shaped",
-	output = "aebase:marble 1",
+	output = "aebase:marble 8",
 	recipe = {
 		{"aebase:marble_fragment","aebase:marble_fragment","aebase:marble_fragment"},
 		{"aebase:marble_fragment","group:aebinder"        ,"aebase:marble_fragment"},

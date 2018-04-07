@@ -35,7 +35,7 @@ minetest.register_ore({
 	wherein			= "aebase:granite_in_stone",
 	clust_scarcity	= 6*6*6,
 	clust_num_ores	= 12,
-	clust_size		= 8,
+	clust_size		= 10,
 	height_min		= -31,000,
 	height_max		= 512,
 })

@@ -6,40 +6,41 @@
 
 -- These are the different aspects associated with imps, and the essences required to activate their powers
 minetest.register_craftitem("imps:crystal_air", {
-	description = "a cloudy crystal", -- Essence used for air recipes and rituals
-	inventory_image = "orb_air.png",
+	description = "a crystal infused with the essence of air", -- Essence used for air recipes and rituals
+	inventory_image = "imps_crystal_air.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_earth", {
-	description = "an earthen crystal", -- Essence used for earth recipes and rituals
-	inventory_image = "orb_earth.png",
+	description = "a crystal infused with the essence of earth", -- Essence used for earth recipes and rituals
+	inventory_image = "imps_crystal_earth.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_fire", {
-	description = "a blazing crystal", -- Essence used for fire recipes and rituals
-	inventory_image = "orb_fire.png",
+	description = "a crystal infused with the essence of fire", -- Essence used for fire recipes and rituals
+	inventory_image = "imps_crystal_fire.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_nature", {
-	description = "a lively crystal", -- Essence used for recipes and rituals of nature
-	inventory_image = "orb_nature.png",
+	description = "a crystal infused with the essence of nature", -- Essence used for recipes and rituals of nature
+	inventory_image = "imps_crystal_nature.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_void", {
-	description = "an extremely empty crystal", -- Essence used for recipes and rituals of the Void
-	inventory_image = "orb_void.png",
+	description = "a crystal infused with the essence of the void", -- Essence used for recipes and rituals of the Void
+	inventory_image = "imps_crystal_void.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_spirit", {
-	description = "an ephemeral crystal", -- Essence used for spirit recipes and rituals
-	inventory_image = "orb_spirit.png",
+	description = "a crystal infused with the essence of the spirit", -- Essence used for spirit recipes and rituals
+	inventory_image = "imps_crystal_spirit.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
 minetest.register_craftitem("imps:crystal_water", {
-	description = "a shimmering crystal", -- Essence used for water recipes and rituals
-	inventory_image = "orb_water.png",
+	description = "a crystal infused with the essence of water", -- Essence used for water recipes and rituals
+	inventory_image = "imps_crystal_water.png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
 })
+
 
 -- Imp-related craftitem Upgrades
 minetest.register_craftitem("imps:pestle", {
@@ -61,8 +62,11 @@ minetest.register_craftitem("imps:binding_agent", {
 })
 minetest.register_craftitem("imps:infused_iron_lump", {
 	description = "Odd Iron Lump",
-	inventory_image = "default_iron_lump.png^bubble.png",		-- ^imps_infused_ore.png (replace ^bubble.png when this exists)
+	inventory_image = "default_iron_lump.png^imps_inf_ore.png",
 	groups = {not_in_craft_guide = 1},
-	stack_max = 99,
 })
 
+minetest.register_craftitem("imps:infused_steel", {
+	description = "an otherworldly steel",
+	inventory_image = "default_steel_ingot.png^imps_inf_ingot.png",
+})

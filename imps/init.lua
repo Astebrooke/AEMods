@@ -1,5 +1,5 @@
 --[[------------------------------------------------------------
-      
+
 	  Interdimensional Metaphysical Parasites & Symbiotes
          As catalogued and presented by your friends at
 
@@ -21,7 +21,6 @@ dofile(MOD_PATH .. "/" .. "pedestals.lua")
 dofile(MOD_PATH .. "/" .. "tools.lua")
 dofile(MOD_PATH .. "/" .. "items.lua")
 dofile(MOD_PATH .. "/" .. "craftnodes.lua")
-dofile(MOD_PATH .. "/" .. "crafttools.lua")
 dofile(MOD_PATH .. "/" .. "crafting.lua")
 
 

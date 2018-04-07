@@ -6,11 +6,10 @@
 
 -- Worldgen-Only block nodes
 minetest.register_node("aebase:granite_in_stone", {
-	description = "Flecked Granite Vein",
 	tiles = {"default_stone.png^granite_in_stone.png"},
 	paramtype2 = "facedir",
 	is_ground_content = true,
-	groups = {cracky=2, level=1, not_in_craft_guide = 1},
+	groups = {cracky=3, level=1, not_in_craft_guide = 1},
 	drop = {
 			max_items = 6,
 			items = {
@@ -25,13 +24,12 @@ minetest.register_node("aebase:granite_in_stone", {
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("aebase:speck_marble_in_stone", {
-	description = "Speckled Marble Vein",
 	tiles = {"default_stone.png^marble_in_stone.png"},
 	paramtype2 = "facedir",
 	is_ground_content = true,
-	groups = {cracky=1, level=2, not_in_craft_guide=1},
+	groups = {cracky=2, level=2, not_in_craft_guide=1},
 	drop = {
-			max_items = 6,
+			max_items = 10,
 			items = {
 					{items = {'aebase:marble_fragment'}},
 					{items = {'aebase:marble_fragment'}, rarity = 2},
@@ -39,6 +37,10 @@ minetest.register_node("aebase:speck_marble_in_stone", {
 					{items = {'aebase:marble_fragment'}, rarity = 4},
 					{items = {'aebase:marble_fragment'}, rarity = 5},
 					{items = {'aebase:marble_fragment'}, rarity = 6},
+					{items = {'aebase:marble_fragment'}, rarity = 7},
+					{items = {'aebase:marble_fragment'}, rarity = 8},
+					{items = {'aebase:marble_fragment'}, rarity = 9},
+					{items = {'aebase:marble_fragment'}, rarity = 10},
 				}
 			},
 	sounds = default.node_sound_stone_defaults(),
@@ -50,7 +52,7 @@ minetest.register_node("aebase:granite", {
 	description = "Flecked Granite",
 	tiles = {"aebase_granite.png"},
 	paramtype2 = "facedir",
-	groups = {cracky=2, level=1, not_in_craft_guide=1},
+	groups = {cracky=3, level=1, not_in_craft_guide=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -60,7 +62,7 @@ minetest.register_node("aebase:granite", {
 minetest.register_node("aebase:granite_bricks", {
 	description = "Flecked Granite Bricks",
 	tiles = {"granite_bricks.png"},
-	groups = {cracky=2, level=1, not_in_craft_guide=1},
+	groups = {cracky=3, level=1, not_in_craft_guide=1},
 	paramtype2 = "facedir",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -72,7 +74,7 @@ minetest.register_node("aebase:marble", {
 	description = "Speckled Marble",
 	tiles = {"aebase_marble.png"},
 	paramtype2 = "facedir",
-	groups = {cracky=1, level=2, not_in_craft_guide=1},
+	groups = {cracky=2, level=2, not_in_craft_guide=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -83,21 +85,21 @@ if minetest.get_modpath("moreblocks") then
 		stairsplus:register_all("aebase", "granite", "aebase:granite", {
 			description = "Flecked Granite",
 			tiles = {"aebase_granite.png"},
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 		})
 
 		stairsplus:register_all("aebase", "granite_bricks", "aebase:granite_bricks", {
 			description = "Flecked Granite Brick",
 			tiles = {"granite_bricks.png"},
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 		})
 
-		stairsplus:register_all("aebase", "marbla", "aebase:marbla", {
+		stairsplus:register_all("aebase", "marble", "aebase:marble", {
 			description = "Speckled Marble",
 			tiles = {"aebase_marble.png"},
-			groups = {cracky=1, level=2, not_in_craft_guide=1},
+			groups = {cracky=2, level=2, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 		})
 else
@@ -110,7 +112,7 @@ else
 			wield_image = "aebase_granite_stairs_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -130,7 +132,7 @@ else
 			wield_image = "aebase_granite_stairs_ci_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -153,7 +155,7 @@ else
 			wield_image = "aebase_granite_stairs_co_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -171,7 +173,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -186,7 +188,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -201,7 +203,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -216,7 +218,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -234,7 +236,7 @@ else
 			wield_image = "aebase_granite_brick_stairs_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -254,7 +256,7 @@ else
 			wield_image = "aebase_granite_brick_stairs_ci_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -277,7 +279,7 @@ else
 			wield_image = "aebase_granite_brick_stairs_co_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -295,7 +297,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -310,7 +312,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -325,7 +327,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",
@@ -340,7 +342,7 @@ else
 			drawtype = "nodebox",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {cracky=2, level=1, not_in_craft_guide=1},
+			groups = {cracky=3, level=1, not_in_craft_guide=1},
 			sounds = default.node_sound_stone_defaults(),
 			node_box = {
 				type = "fixed",

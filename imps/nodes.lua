@@ -7,7 +7,7 @@
 -- Worldgen-Only block nodes
 minetest.register_node("imps:infused_stone_with_iron",{
 	description = "Odd Iron Ore",
-	tiles = {"default_stone.png^(default_mineral_iron.png^default_glass.png)"},
+	tiles = {"default_stone.png^imps_inf_iron.png"},
 	groups = {cracky = 3, imps_infused = 1, not_in_craft_guide = 1},
 	drop = "imps:infused_iron_lump",
 	sounds = default.node_sound_stone_defaults(),
@@ -43,5 +43,5 @@ minetest.register_node("imps:stylstarmarble", {
 	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
---  Natural Node Infusions
 
+--

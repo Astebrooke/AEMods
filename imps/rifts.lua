@@ -11,7 +11,7 @@ local rifts = {"air", "earth", "fire", "nature", "spirit", "void", "water"}
 for _ , riftType in pairs(rifts) do
   minetest.register_node(MOD_NAME .. ":" .. "rift_" .. riftType, {
   	description = riftType .. " Rift",
-	
+
 	rift_type = riftType,
   	drawtype = "plantlike",
     use_texture_alpha = not (riftType == "water"),
@@ -36,9 +36,9 @@ end
 -- generation stuff, and rarity settings
 -- Rarity is interpreted as 1 in [Rarity] potential nodes locations will contain a rift
 
-local rarityAir = 10
+local rarityAir = 250
 local rarityEarth = 1200 -- generate above stone/drygrass, which is very common, so Rarity needs to be higher
-local rarityFire = 50 -- generates only above Lava, so Rarity is lower
+local rarityFire = 750 -- generates only above Lava, so Rarity is lower
 local rarityWater = 1000  -- Generates above Water_source nodes, so rarity needs to be pretty high
 local rarityNature = 1000 -- generates above grass/drygrass - so rarity needs to be pretty high
 
@@ -67,6 +67,7 @@ local cStone = minetest.get_content_id("default:stone")
 local cSilSand = minetest.get_content_id("default:silver_sand")
 local cDesSand = minetest.get_content_id("default:desert_sand")
 local cDesStone = minetest.get_content_id("default:desert_stone")
+local cSnow = minetest.get_content_id("default:snow")
 
 local vmdata = {}
 
@@ -139,7 +140,7 @@ function(minp, maxp, blockseed)
 		-- Air Rift
         if genAir
           and vmdata[indexAbove] == cAir
-          and vmdata[i] == cSilSand
+          and (vmdata[i] == cSilSand or vmdata[i] == cSnow)
           and checkChance(rarityAir) then
             vmdata[indexAbove] = cRiftAir
             somethingGenerated = true
