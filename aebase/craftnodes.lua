@@ -17,6 +17,16 @@ minetest.register_craft({
 	}
 })
 
+-- Speckled Marble recipes
+minetest.register_craft({
+	type = "shaped",
+	output = "aebase:marble 8",
+	recipe = {
+		{"aebase:marble_fragment","aebase:marble_fragment","aebase:marble_fragment"},
+		{"aebase:marble_fragment","group:aebinder"        ,"aebase:marble_fragment"},
+		{"aebase:marble_fragment","aebase:marble_fragment","aebase:marble_fragment"},
+	}
+})
 
 -- Recipes in case the moreblocks mod is not installed
 if minetest.get_modpath("moreblocks") then
@@ -89,14 +99,3 @@ else
 		}
 	})
 end
-
--- Speckled Marble recipes
-minetest.register_craft({
-	type = "shaped",
-	output = "aebase:marble 8",
-	recipe = {
-		{"aebase:marble_fragment","aebase:marble_fragment","aebase:marble_fragment"},
-		{"aebase:marble_fragment","group:aebinder"        ,"aebase:marble_fragment"},
-		{"aebase:marble_fragment","aebase:marble_fragment","aebase:marble_fragment"},
-	}
-})

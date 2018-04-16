@@ -4,6 +4,7 @@ While the concept and application of the mod have been the work of Astebrooke, m
 -=ZenonSeth's Invaluable Contributions=-
 • Putting up with Astebrooke's abnormal mental processes for so long
 • Rift generation and crystallization (the scope of this entry is so much greater than its line would indicate)
+• utils.lua code library for simplifying functions
 
 -=Image Credits=-
-Will add once I have some solid textures that will not just be swapped out later, if they aren't created in house.
+KristalCanada.com for the crystal images (although obtainable from dozens of pinterest pages, they appear to originate from this site as it's on the box art for their educational grow-at-home crystal kits)

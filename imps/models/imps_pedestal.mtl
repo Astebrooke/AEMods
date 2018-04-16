@@ -1,24 +1,68 @@
 # Blender MTL File: 'imps_pedestal.blend'
-# Material Count: 2
+# Material Count: 6
 
-newmtl Slopes
+newmtl Bottom
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
-Kd 0.317084 0.640000 0.080037
+Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd G:\\Games\\Minetest\\mods\\imps\\textures\\tilestar.png
+map_Kd G:\Games\Minetest\mods\imps\textures\tilexo.png
 
-newmtl Surface
+newmtl Sides
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
-Kd 0.640000 0.543379 0.055626
+Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd G:\\Games\\Minetest\\mods\\aebase\\textures\\marble.png
+map_Kd G:\Games\Minetest\mods\imps\textures\tilestylized.png
+
+newmtl Sides_tilexo.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd G:\Games\Minetest\mods\imps\textures\tilexo.png
+
+newmtl Top
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd G:\Games\Minetest\mods\imps\textures\tilestar.png
+
+newmtl Top_tilestylized.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd G:\Games\Minetest\mods\imps\textures\tilestylized.png
+
+newmtl Top_tilexo.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd G:\Games\Minetest\mods\imps\textures\tilexo.png

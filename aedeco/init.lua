@@ -1,5 +1,5 @@
 --[[------------------------------------------------------------
-      
+
 	            Decorations for Home and Hovel
          As catalogued and presented by your friends at
 
@@ -13,6 +13,6 @@ local MOD_PATH = minetest.get_modpath(MOD_NAME);
 aedeco = {}
 
 dofile(MOD_PATH .. "/" .. "barrels.lua")
-dofile(MOD_PATH .. "/" .. "columns.lua")
+dofile(MOD_PATH .. "/" .. "pedestals_and_columns.lua")
 dofile(MOD_PATH .. "/" .. "fortifications.lua")
 dofile(MOD_PATH .. "/" .. "banners.lua")
