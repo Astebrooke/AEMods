@@ -1,4 +1,14 @@
--- Columns and other similar decorations, by -=Astebrooke Enterprises=-
+--[[ Columns and other similar decorations, by -=Astebrooke Enterprises=- ]]--
+
+
+-- Collision/Selection Box so the nodeboxes don't look all fugly.
+local pedestal_cbox = { -- Collision boxes for pedestals
+	type = "fixed",
+	fixed = {
+		{ -0.4, -0.5, -0.4, 0.4, 0.5, 0.4 },
+	}
+}
+
 -- These models created with RubenWardy's NodeBox Editor
 
 minetest.register_node("aedeco:column_granite_base", {
@@ -24,8 +34,9 @@ minetest.register_node("aedeco:column_granite_base", {
 			{-0.1875, -0.125, -0.125, 0.1875, 0.5, 0.125}, -- Xvector
 			{-0.125, -0.125, -0.1875, 0.125, 0.5, 0.1875}, -- ZVector
 			{-0.375, -0.5, -0.375, 0.375, -0.4375, 0.375}, -- baseplate_1
-		}
-	}
+		},
+	},
+	selection_box = pedestal_cbox,
 })
 minetest.register_craft({
 	type = "shaped",
@@ -63,8 +74,8 @@ minetest.register_node("aedeco:column_granite_cap", {
 			{-0.3125, 0.4375, -0.3125, 0.3125, 0.5, 0.3125}, -- capplate_1ZX
 			{-0.25, 0.375, -0.3125, 0.25, 0.4375, 0.3125}, -- capplate_2Z
 			{-0.1875, 0.3125, -0.25, 0.1875, 0.375, 0.25}, -- capplate_3Z
-		}
-	}
+		},
+	},
 })
 minetest.register_node("aedeco:column_granite_center", {
 	tiles = {
@@ -85,8 +96,8 @@ minetest.register_node("aedeco:column_granite_center", {
 		fixed = {
 			{-0.1875, -0.5, -0.125, 0.1875, 0.5, 0.125}, -- Xvector
 			{-0.125, -0.5, -0.1875, 0.125, 0.5, 0.1875}, -- ZVector
-		}
-	}
+		},
+	},
 })
 minetest.register_node("aedeco:column_granite_center_detail", {
 	tiles = {
@@ -107,8 +118,8 @@ minetest.register_node("aedeco:column_granite_center_detail", {
 			{-0.1875, -0.3125, -0.1875, 0.1875, 0.3125, 0.1875}, -- centerblock
 			{-0.25, -0.25, -0.0625, 0.25, 0.25, 0.0625}, -- Xbumpout
 			{-0.0625, -0.25, -0.25, 0.0625, 0.25, 0.25}, -- Zbumpout
-		}
-	}
+		},
+	},
 })
 
 minetest.register_node("aedeco:blankped", {
@@ -141,6 +152,7 @@ minetest.register_node("aedeco:blankped", {
 			{-0.3125, -0.375, -0.3125, 0.3125, -0.3125, 0.3125}, -- column_base1
 			{-0.375, -0.4375, -0.375, 0.375, -0.375, 0.375}, -- column_base2
 			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5}, -- pedestal_base
-		}
-	}
+		},
+	},
+	selection_box = pedestal_cbox,
 })

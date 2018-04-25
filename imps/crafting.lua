@@ -1,10 +1,15 @@
+local MOD_NAME = minetest.get_current_modname() or "imps";
+local MOD_PATH = minetest.get_modpath(MOD_NAME);
+
+local impElems = {"nature", "air", "earth", "fire", "water", "spirit", "void"}-- These are the different aspects associated with imps
+
 --[[	**************************
-		
+
 		Recipes for non-tool items
-		
+
 		**************************	]]
 
--- Infusion Crafting
+-- Infusion/Rifts Crafting
 minetest.register_craft({
 	type = "shapeless",
 	output = "imps:pestle 1",
@@ -13,8 +18,28 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = "imps:binding_paste 1",
-	recipe = {"aebase:binding_paste","group:impessence"},
+	recipe = {"aebase:binding_paste","group:imppowder"},
 })
+minetest.register_craft({
+	type = "shaped",
+	output = "imps:foci_empty",
+	recipe = {
+		{"aebase:marble_fragment","imps:binding_agent"     ,"aebase:marble_fragment"},
+		{"group:imppowder"       ,"vessels:glass_fragments","group:imppowder"       },
+		{"aebase:marble_fragment","group:imppowder"        ,"aebase:marble_fragment"},
+	},
+})
+
+for _ , itemElem in pairs(impElems) do -- This registers all seven crystal-to-powder recipes at once.
+	minetest.register_craft({
+		type = "shapeless",
+		output = MOD_NAME .. ":" .. "powder_" .. itemElem .. " 3",
+		recipe = {"imps:pestle",MOD_NAME .. ":" .. "crystal_" .. itemElem},
+		replacements = {
+			{"imps:pestle","imps:pestle"}
+		}
+	})
+end
 
 -- Replacement Recipes
 minetest.register_craft({
@@ -24,22 +49,15 @@ minetest.register_craft({
 	replacements = {
 		{"aebase:pestle","aebase:pestle"},
 		{"imps:pestle","imps:pestle"},
-	},	
+	},
 })
 
---[[	**************************
-		
-		Recipes for tool items
-		
-		**************************	]]
-
--- Tools used for interaction with imps
 
 
 --[[	**************************
-		
+
 		Recipes for smelting
-		
+
 		**************************	]]
 
 -- Replacement Smelting Recipes

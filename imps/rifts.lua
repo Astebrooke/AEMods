@@ -6,10 +6,10 @@ local VMBuffer = {}
 
 -- Register all the different types of nodes - using a single for-loop
 
-local rifts = {"air", "earth", "fire", "nature", "spirit", "void", "water"}
+local rifts = {"nature", "air", "earth", "fire", "water", "spirit", "void"} -- These are the different aspects associated with imps
 
 for _ , riftType in pairs(rifts) do
-  minetest.register_node(MOD_NAME .. ":" .. "rift_" .. riftType, {
+  minetest.register_node(MOD_NAME .. ":rift_" .. riftType, {
   	description = riftType .. " Rift",
 
 	rift_type = riftType,
@@ -33,14 +33,86 @@ for _ , riftType in pairs(rifts) do
   })
 end
 
+for _ , riftType in pairs(rifts) do
+  minetest.register_node(MOD_NAME .. ":stable_rift_" .. riftType, {
+  	description = riftType .. " Rift",
+
+	rift_type = riftType,
+  	drawtype = "mesh",
+    mesh = "imps_pedestal_rift.obj",
+    use_texture_alpha = true,
+  	tiles = {"aebase_marble.png", "imps_rift_" .. riftType .. ".png"},  -- todo: more pngs for diff rift types
+  	groups = {imps_rift = 2, not_in_craft_guide = 1},
+	  paramtype = "light",
+    paramtype2 = "facedir",
+  	sunlight_propagates = true,
+    is_ground_content = false,
+  	walkable = false,
+  	sounds = default.node_sound_leaves_defaults(),
+    diggable = false,
+    drop = {},
+    on_place = minetest.rotate_node,
+    light_source = 6, -- faint glow
+  	selection_box = {
+  		type = "fixed",
+  		fixed = {.35, 1.15, .025, -.35, -.4, -.025},
+  	},
+   metadata = {
+     riftLvl = 2
+   },
+  })
+end
+
+for _ , riftType in pairs(rifts) do
+  minetest.register_node(MOD_NAME .. ":drained_rift_" .. riftType, {
+  	description = riftType .. " Rift",
+
+	rift_type = riftType,
+  	drawtype = "mesh",
+    mesh = "imps_pedestal_rift_drained.obj",
+    use_texture_alpha = true,
+  	tiles = {"aebase_marble.png", "imps_rift_" .. riftType .. ".png"},  -- todo: more pngs for diff rift types
+  	groups = {imps_rift = 2, not_in_craft_guide = 1},
+	  paramtype = "light",
+    paramtype2 = "facedir",
+  	sunlight_propagates = true,
+    is_ground_content = false,
+  	walkable = false,
+  	sounds = default.node_sound_leaves_defaults(),
+    drop = {},
+    on_place = minetest.rotate_node,
+    light_source = 2, -- faint glow
+  	selection_box = {
+  		type = "fixed",
+  		fixed = {0, 0, 0, 0, 0, 0},
+  	},
+   metadata = {
+     {riftLvl = 2},
+     {riftPwr = 0},
+   },
+  })
+end
+
+for _ , riftType in pairs(rifts) do
+  minetest.register_abm({
+    nodenames = {MOD_NAME .. ":drained_rift_" .. riftType},
+    neighbors = {MOD_NAME .. ":" .. riftType .. "_pedestal"},
+    interval = 10.0,
+    chance = 1,
+    action = function(pos, node, active_object_count, active_object_count_wider)
+      minetest.swap_node(pos, {name = MOD_NAME .. ":stable_rift_" .. riftType})
+    end
+  })
+end
+
 -- generation stuff, and rarity settings
 -- Rarity is interpreted as 1 in [Rarity] potential nodes locations will contain a rift
 
-local rarityAir = 250
+local rarityAir = 250 -- generates above silver sand and snow,
 local rarityEarth = 1200 -- generate above stone/drygrass, which is very common, so Rarity needs to be higher
-local rarityFire = 750 -- generates only above Lava, so Rarity is lower
+local rarityFire = 750 -- generates only above Lava, desert sand, or desert stone, medium rarity due to desert biomes
 local rarityWater = 1000  -- Generates above Water_source nodes, so rarity needs to be pretty high
-local rarityNature = 1000 -- generates above grass/drygrass - so rarity needs to be pretty high
+local rarityNature = 1000 -- generates above dirt_with_grass/rainforest_litter - so rarity needs to be pretty high
 
 local limitOnePerGen = true   -- limits generation to make only 1 node per generated chunk (aka 1 max per call to on_generated)
 
@@ -67,7 +139,8 @@ local cStone = minetest.get_content_id("default:stone")
 local cSilSand = minetest.get_content_id("default:silver_sand")
 local cDesSand = minetest.get_content_id("default:desert_sand")
 local cDesStone = minetest.get_content_id("default:desert_stone")
-local cSnow = minetest.get_content_id("default:snow")
+local cSnow1 = minetest.get_content_id("default:dirt_with_snow")
+local cSnow2 = minetest.get_content_id("default:snow")
 
 local vmdata = {}
 
@@ -140,7 +213,7 @@ function(minp, maxp, blockseed)
 		-- Air Rift
         if genAir
           and vmdata[indexAbove] == cAir
-          and (vmdata[i] == cSilSand or vmdata[i] == cSnow)
+          and (vmdata[i] == cSilSand or vmdata[i] == cSnow1 or vmdata[i] == cSnow2)
           and checkChance(rarityAir) then
             vmdata[indexAbove] = cRiftAir
             somethingGenerated = true

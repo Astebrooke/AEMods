@@ -1,4 +1,8 @@
 local MOD_NAME = minetest.get_current_modname() or "imps";
+local MOD_PATH = minetest.get_modpath(MOD_NAME);
+
+local rifts = {"nature", "air", "earth", "fire", "water", "spirit", "void"} -- These are the different aspects associated with imps
+
 
 --[[	*************************************************************************
 
@@ -7,7 +11,7 @@ local MOD_NAME = minetest.get_current_modname() or "imps";
 
 		*************************************************************************	]]
 
-
+		--Trying to put code outside of the tool's on_place call repeatedly crashed
 
 --[[	*************************************************************************
 
@@ -41,40 +45,17 @@ minetest.register_tool("imps:crystallizer1", {
 
 			if nodeDef.groups["imps_rift"] then
 				local riftLvl = nodeDef.groups["imps_rift"]
-					if riftLvl == 1 then
-						minetest.remove_node(pos)
-						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
-						minetest.add_item(pos, shardStack)
-					elseif riftLvl == 2 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") and itemstack.groups["imps_RID"] < 1 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 3 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_air" or "_earth" or "_fire" or "_water") and itemstack.groups["imps_RID"] < 2 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 4 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_spirit") and itemstack.groups["imps_RID"] < 3 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 5 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_void") and itemstack.groups["imps_RID"] < 4 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					else
-						minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-					end
+				if riftLvl == 1 then
+					minetest.remove_node(pos)
+					local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+					minetest.add_item(pos, shardStack)
+					local used = true
+				else
+					minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
+				end
 			end
 		if used then
-			itemstack:add_wear(65536 / 249)
+			itemstack:add_wear(65536 / 149)
 		end
 	return itemstack
 end
@@ -101,25 +82,34 @@ minetest.register_tool("imps:crystallizer2", {
 		local used = false
 
 		local nodeDef = minetest.registered_nodes[node.name]
+		local riftsWild = string.starts(node.name, "imps:rift_")
+		local riftsStable1 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature")
+		local riftsStable2 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water")
+		local riftsStable3 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit")
+		local riftsStable4 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit") or string.ends(node.name, "_void")
 
 			if nodeDef.groups["imps_rift"] then
 				local riftLvl = nodeDef.groups["imps_rift"]
-					if riftLvl == 1 then
-						minetest.remove_node(pos)
-						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+				if riftLvl == 1 then
+					minetest.remove_node(pos)
+					local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+					minetest.add_item(pos, shardStack)
+					local used = true
+				elseif riftLvl == 2 then
+					if riftsStable1 then
+						minetest.swap_node(pos, {name = MOD_NAME .. ":drained_rift_" .. riftType})
+						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(10,20) }
 						minetest.add_item(pos, shardStack)
-					elseif riftLvl == 2 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") and itemstack.groups["imps_RID"] < 1 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
+						local used = true
 					else
 						minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
 					end
+				else
+					minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
+				end
 			end
 		if used then
-			itemstack:add_wear(65536 / 249)
+			itemstack:add_wear(65536 / 199)
 		end
 	return itemstack
 end
@@ -146,28 +136,29 @@ minetest.register_tool("imps:crystallizer3", {
 		local used = false
 
 		local nodeDef = minetest.registered_nodes[node.name]
+		local riftsWild = string.starts(node.name, "imps:rift_")
+		local riftsStable1 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature")
+		local riftsStable2 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water")
+		local riftsStable3 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit")
+		local riftsStable4 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit") or string.ends(node.name, "_void")
 
 			if nodeDef.groups["imps_rift"] then
 				local riftLvl = nodeDef.groups["imps_rift"]
-					if riftLvl == 1 then
-						minetest.remove_node(pos)
-						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+				if riftLvl == 1 then
+					minetest.remove_node(pos)
+					local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+					minetest.add_item(pos, shardStack)
+					local used = true
+				elseif riftLvl == 2 then
+					if riftsStable2 then
+						minetest.swap_node(pos, {name = MOD_NAME .. ":drained_rift_" .. riftType})
+						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(12,25) }
 						minetest.add_item(pos, shardStack)
-					elseif riftLvl == 2 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") and itemstack.groups["imps_RID"] < 1 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 3 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_air" or "_earth" or "_fire" or "_water") and itemstack.groups["imps_RID"] < 2 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
+						local used = true
 					else
 						minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
 					end
+				end
 			end
 		if used then
 			itemstack:add_wear(65536 / 249)
@@ -175,63 +166,62 @@ minetest.register_tool("imps:crystallizer3", {
 	return itemstack
 end
 })
+
 minetest.register_tool("imps:crystallizer4", {
 	description = "Spirit-Attuned Rift Interaction Device",
 	inventory_image = "imps_crystallizer.png^imps_cry_t3.png",
 	groups = {imps_RID = 4},
 	wield_scale = {x=1.5,y=1.5,z=0.4},
 	-- call crystallization function, adding interaction with Tier 3 Stable Rifts (Spirit)
-	on_place = function(itemstack, user, pointed_thing)
+on_place = function(itemstack, user, pointed_thing)
 
-		if not pointed_thing.under then
-			return itemstack
-		end
+	if not pointed_thing.under then
+		return itemstack
+	end
 
-		local pos = pointed_thing.under
-		local node = minetest.get_node(pos)
+	local pos = pointed_thing.under
+	local node = minetest.get_node(pos)
 
-		if not node then
-			return itemstack
-		end
+	if not node then
+		return itemstack
+	end
 
-		local used = false
+	local used = false
 
-		local nodeDef = minetest.registered_nodes[node.name]
+	local nodeDef = minetest.registered_nodes[node.name]
+	local riftsWild = string.starts(node.name, "imps:rift_")
+	local riftsStable1 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature")
+	local riftsStable2 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water")
+	local riftsStable3 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit")
+	local riftsStable4 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit") or string.ends(node.name, "_void")
 
-			if nodeDef.groups["imps_rift"] then
-				local riftLvl = nodeDef.groups["imps_rift"]
-					if riftLvl == 1 then
-						minetest.remove_node(pos)
-						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
-						minetest.add_item(pos, shardStack)
-					elseif riftLvl == 2 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") and itemstack.groups["imps_RID"] < 1 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 3 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_air" or "_earth" or "_fire" or "_water") and itemstack.groups["imps_RID"] < 2 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 4 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_spirit") and itemstack.groups["imps_RID"] < 3 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					else
-						minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-					end
+	if nodeDef.groups["imps_rift"] then
+		local riftLvl = nodeDef.groups["imps_rift"]
+		if riftLvl == 1 then
+			minetest.remove_node(pos)
+			local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+			minetest.add_item(pos, shardStack)
+			local used = true
+		elseif riftLvl == 2 then
+			if riftsStable3 then
+				minetest.swap_node(pos, {name = MOD_NAME .. ":drained_rift_" .. riftType})
+				local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(15,30) }
+				minetest.add_item(pos, shardStack)
+				local used = true
+			else
+				minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
 			end
-		if used then
-			itemstack:add_wear(65536 / 249)
+		else
+			minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
 		end
+	end
+	if used then
+		itemstack:add_wear(65536 / 349)
+	end
 	return itemstack
 end
 })
+
 minetest.register_tool("imps:crystallizer5", {
 	description = "Void-Attuned Rift Interaction Device",
 	inventory_image = "imps_crystallizer.png^imps_cry_t4.png",
@@ -254,54 +244,43 @@ minetest.register_tool("imps:crystallizer5", {
 		local used = false
 
 		local nodeDef = minetest.registered_nodes[node.name]
+		local riftsWild = string.starts(node.name, "imps:rift_")
+		local riftsStable1 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature")
+		local riftsStable2 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water")
+		local riftsStable3 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit")
+		local riftsStable4 = string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") or string.ends(node.name, "_air") or string.ends(node.name, "_earth") or string.ends(node.name, "_fire") or string.ends(node.name, "_water") or string.ends(node.name, "_spirit") or string.ends(node.name, "_void")
 
 			if nodeDef.groups["imps_rift"] then
 				local riftLvl = nodeDef.groups["imps_rift"]
-					if riftLvl == 1 then
+				if riftLvl == 1 then
+					minetest.remove_node(pos)
+					local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+					minetest.add_item(pos, shardStack)
+				elseif riftLvl == 2 then
+					if riftsStable4 then
 						minetest.remove_node(pos)
-						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(1,5) }
+						local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count = math.random(17,35) }
 						minetest.add_item(pos, shardStack)
-					elseif riftLvl == 2 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_nature") and itemstack.groups["imps_RID"] < 1 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 3 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_air" or "_earth" or "_fire" or "_water") and itemstack.groups["imps_RID"] < 2 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 4 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_spirit") and itemstack.groups["imps_RID"] < 3 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
-					elseif riftLvl == 5 then
-						if string.starts(node.name, "imps:stable_") and string.ends(node.name, "_void") and itemstack.groups["imps_RID"] < 4 then
-							local shardStack = {name = MOD_NAME .. ":" .. "crystal_" .. nodeDef.rift_type, count - math.random(10,20) }
-						else
-							minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
-						end
 					else
 						minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
 					end
+				else
+					minetest.chat_send_all("Your R.I.D. is not powerful enough to affect this rift")
+				end
 			end
 		if used then
 			itemstack:add_wear(65536 / 249)
 		end
-	return itemstack
-end
+		return itemstack
+	end
 })
 
 minetest.register_craft({
 	type = "shaped",
 	output = "imps:crystallizer1 1",
 	recipe = {
-		{"imps:infused_steel",""                    ,"imps:infused_steel"},
-		{""                  ,"default:mese_crystal",""                  },
+		{"imps:infused_steel",""                      ,"imps:infused_steel"},
+		{""                  ,"default:mese_crystal"  ,""                  },
 		{""                  ,"aebase:marble_fragment",""                  },
 	},
 })

@@ -1,9 +1,9 @@
 --[[	**************************
-		
+
 				Solid Blocks
-		
+
 		**************************	]]
-		
+
 -- Worldgen-Only block nodes
 minetest.register_node("imps:infused_stone_with_iron",{
 	description = "Odd Iron Ore",
@@ -15,6 +15,7 @@ minetest.register_node("imps:infused_stone_with_iron",{
 
 -- Worldgen-Only liquid nodes (currently unused)
 
+-- Rift Stabilizers
 
 -- Speckled Marble nodes
 minetest.register_node("imps:starmarble", {

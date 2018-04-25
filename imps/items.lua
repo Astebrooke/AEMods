@@ -1,48 +1,37 @@
+local MOD_NAME = minetest.get_current_modname() or "imps";
+local MOD_PATH = minetest.get_modpath(MOD_NAME);
+
+local impElems = {"nature", "air", "earth", "fire", "water", "spirit", "void"} -- These are the different aspects associated with imps
+
 --[[	**************************
-		
+
 		Recipes for non-tool items
-		
+
 		**************************	]]
 
--- These are the different aspects associated with imps, and the essences required to activate their powers
-minetest.register_craftitem("imps:crystal_air", {
-	description = "a crystal infused with the essence of air", -- Essence used for air recipes and rituals
-	inventory_image = "imps_crystal_air.png",
+for _ , itemElem in pairs(impElems) do -- This registers all seven aspects of crystals at once
+	minetest.register_craftitem(MOD_NAME .. ":" .. "crystal_" .. itemElem, {
+	description = "a crystal infused with the essence of " .. itemElem,
+	inventory_image = "imps_crystal_" .. itemElem .. ".png",
 	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_earth", {
-	description = "a crystal infused with the essence of earth", -- Essence used for earth recipes and rituals
-	inventory_image = "imps_crystal_earth.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_fire", {
-	description = "a crystal infused with the essence of fire", -- Essence used for fire recipes and rituals
-	inventory_image = "imps_crystal_fire.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_nature", {
-	description = "a crystal infused with the essence of nature", -- Essence used for recipes and rituals of nature
-	inventory_image = "imps_crystal_nature.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_void", {
-	description = "a crystal infused with the essence of the void", -- Essence used for recipes and rituals of the Void
-	inventory_image = "imps_crystal_void.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_spirit", {
-	description = "a crystal infused with the essence of the spirit", -- Essence used for spirit recipes and rituals
-	inventory_image = "imps_crystal_spirit.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
-})
-minetest.register_craftitem("imps:crystal_water", {
-	description = "a crystal infused with the essence of water", -- Essence used for water recipes and rituals
-	inventory_image = "imps_crystal_water.png",
-	groups = {impessence = 1, not_in_craft_guide = 1},
+	})
+end
+for _ , itemElem in pairs(impElems) do -- This registers all seven aspects of powders at once
+	minetest.register_craftitem(MOD_NAME .. ":" .. "powder_" .. itemElem, {
+	description = "a powdered crystal infused with the essence of " .. itemElem,
+	inventory_image = "imps_powder_" .. itemElem .. ".png",
+	groups = {imppowder = 1, not_in_craft_guide = 1},
+	})
+end
+
+-- Crystal Foci for creating stable rifts
+minetest.register_craftitem("imps:foci_empty", {
+	description = "an empty focal ring",
+	inventory_image = "imps_foci_empty.png",
+	groups = {impsfoci},
 })
 
-
--- Imp-related craftitem Upgrades
+-- imps-related craftitem Upgrades
 minetest.register_craftitem("imps:pestle", {
 	description = "Infused Mortar & Pestle",
 	inventory_image = "imps_pestle.png",
