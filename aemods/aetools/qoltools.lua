@@ -4,22 +4,6 @@
 
 		**************************	]]
 
--- Sledgehammer
-minetest.register_tool("aetools:sledge", {
-	description = "a rock crushing hammer",
-	inventory_image = "aetools_sledge.png",
-	wield_scale = {x = 2, y = 2, z = 0.75},
-	tool_capabilities = {
-		full_punch_interval = 1.0,
-		max_drop_level = 1,
-		groupcaps = {
-			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=75, maxlevel=2},
-			crumbly = {times={[1]=3.00, [2]=1.60, [3]=0.80}, uses=75, maxlevel=2},
-		},
-		damage_groups = {fleshy=2},
-	},
-	sound = {breaks = "default_tool_breaks"},
-})
 -- Allows tools to affect drops
 local old_handle_node_drops = minetest.handle_node_drops
 local crushRes = {}
@@ -33,6 +17,9 @@ local trowel_nodes = {}
 			trowel_nodes["default:dirt_with_dry_grass"] = true
 			trowel_nodes["default:dirt_with_snow"] = true
 			trowel_nodes["default:dirt_with_rainforest_litter"] = true
+			trowel_nodes["farming:soil"] = true
+			trowel_nodes["farming:soil_wet"] = true
+
 function minetest.handle_node_drops(pos, drops, digger)
   local tool = digger:get_wielded_item():get_name()
   if tool == 'aetools:sledge'--[[ or (tool == 'someother:tool')]] then
@@ -57,6 +44,33 @@ function minetest.handle_node_drops(pos, drops, digger)
   return old_handle_node_drops(pos, drops, digger)
 end
 
+
+-- Sledgehammer
+minetest.register_tool("aetools:sledge", {
+	description = "a rock crushing hammer",
+	inventory_image = "aetools_sledge.png",
+	wield_scale = {x = 2, y = 2, z = 0.75},
+	tool_capabilities = {
+		full_punch_interval = 1.0,
+		max_drop_level = 1,
+		groupcaps = {
+			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=75, maxlevel=2},
+			crumbly = {times={[1]=3.00, [2]=1.60, [3]=0.80}, uses=75, maxlevel=2},
+		},
+		damage_groups = {fleshy=2},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_craft({
+	type = "shaped",
+	output = "aetools:sledge",
+	recipe = {
+		{"","default:steel_ingot"             ,""},
+		{"","default:stick","default:steel_ingot"},
+		{"default:stick"                   ,"",""},
+	},
+})
 -- Trowel (used to carefully dig up special dirt, )
 minetest.register_tool("aetools:trowel", {
 	description = "a trowel for careful gardening",
@@ -71,6 +85,15 @@ minetest.register_tool("aetools:trowel", {
 		damage_groups = {fleshy=1},
 	},
 	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_craft({
+	type = "shaped",
+	output = "aetools:trowel 1",
+	recipe = {
+		{""      ,"default:stick"},
+		{"default:steel_ingot",""},
+	},
 })
 
 -- Chisel (modifies shapes of other nodes)
@@ -118,9 +141,12 @@ minetest.register_tool("aetools:chisel", {
 })
 
 minetest.register_craft({
-	type = "shapeless",
+	type = "shaped",
 	output = "aetools:chisel 1",
-	recipe = {"aebase:marble_fragment", "default:steel_ingot"},
+	recipe = {
+		{""    ,"default:steel_ingot"},
+		{"aebase:marble_fragment", ""},
+	},
 })
 
 -- Sickle (farms 3x3 planted items on right-click, to avoid digging the farmland)
