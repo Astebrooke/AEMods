@@ -1,6 +1,5 @@
 --[[ Columns and other similar decorations, by -=Astebrooke Enterprises=- ]]--
 
-
 -- Collision/Selection Box so the nodeboxes don't look all fugly.
 local pedestal_cbox = { -- Collision boxes for pedestals
 	type = "fixed",

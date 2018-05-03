@@ -47,7 +47,7 @@ end
 
 -- Sledgehammer
 minetest.register_tool("aetools:sledge", {
-	description = "a rock crushing hammer",
+	description = "rock crushing hammer",
 	inventory_image = "aetools_sledge.png",
 	wield_scale = {x = 2, y = 2, z = 0.75},
 	tool_capabilities = {
@@ -73,7 +73,7 @@ minetest.register_craft({
 })
 -- Trowel (used to carefully dig up special dirt, )
 minetest.register_tool("aetools:trowel", {
-	description = "a trowel for careful gardening",
+	description = "trowel for careful gardening",
 	inventory_image = "aetools_trowel.png",
 	wield_scale = {x = 2, y = 1.5, z = 0.75},
 	tool_capabilities = {
