@@ -81,27 +81,27 @@ minetest.register_node("aebase:marble", {
 
 -- moreblocks compatibility
 if minetest.get_modpath("moreblocks") then
+	-- if moreblocks is installed, register the nodes with the table saw
+	stairsplus:register_all("aebase", "granite", "aebase:granite", {
+		description = "Flecked Granite",
+		tiles = {"aebase_granite.png"},
+		groups = {cracky=3, level=1, not_in_craft_guide=1},
+		sounds = default.node_sound_stone_defaults(),
+	})
 
-		stairsplus:register_all("aebase", "granite", "aebase:granite", {
-			description = "Flecked Granite",
-			tiles = {"aebase_granite.png"},
-			groups = {cracky=3, level=1, not_in_craft_guide=1},
-			sounds = default.node_sound_stone_defaults(),
-		})
+	stairsplus:register_all("aebase", "granite_bricks", "aebase:granite_bricks", {
+		description = "Flecked Granite Brick",
+		tiles = {"granite_bricks.png"},
+		groups = {cracky=3, level=1, not_in_craft_guide=1},
+		sounds = default.node_sound_stone_defaults(),
+	})
 
-		stairsplus:register_all("aebase", "granite_bricks", "aebase:granite_bricks", {
-			description = "Flecked Granite Brick",
-			tiles = {"granite_bricks.png"},
-			groups = {cracky=3, level=1, not_in_craft_guide=1},
-			sounds = default.node_sound_stone_defaults(),
-		})
-
-		stairsplus:register_all("aebase", "marble", "aebase:marble", {
-			description = "Speckled Marble",
-			tiles = {"aebase_marble.png"},
-			groups = {cracky=2, level=2, not_in_craft_guide=1},
-			sounds = default.node_sound_stone_defaults(),
-		})
+	stairsplus:register_all("aebase", "marble", "aebase:marble", {
+		description = "Speckled Marble",
+		tiles = {"aebase_marble.png"},
+		groups = {cracky=2, level=2, not_in_craft_guide=1},
+		sounds = default.node_sound_stone_defaults(),
+	})
 else
 		-- If moreblocks mod is not installed, then register nodeboxes
 		minetest.register_node("aebase:granite_stairs", {
@@ -351,6 +351,56 @@ else
 				}
 			}
 		})
+end
+
+
+-- xdecor compatibility
+if minetest.get_modpath("xdecor") then
+	minetest.register_node("aebase:smooth_stone_tile", {
+		description = "smooth stone tile",
+		tiles = {"xdecor_stone_tile.png", "aebase_stone_tile_detail.png"},
+		drawtype = "glasslike_framed",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+	minetest.register_node("aebase:smooth_desertstone_tile", {
+		description = "smooth desert stone tile",
+		tiles = {"xdecor_desertstone_tile.png", "aebase_desertstone_tile_detail.png"},
+		drawtype = "glasslike_framed",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+	if minetest.get_modpath("moreblocks") then
+		-- if moreblocks is installed, register the nodes with the table saw
+		stairsplus:register_all("xdecor", "stone_tile", "xdecor:stone_tile", {
+			description = "stone tile",
+			tiles = {"xdecor_stone_tile.png"},
+			groups = {cracky = 1},
+			sounds = default.node_sound_stone_defaults(),
+		})
+		stairsplus:register_all("xdecor", "desertstone_tile", "xdecor:desertstone_tile", {
+			description = "desert stone tile",
+			tiles = {"xdecor_desertstone_tile.png"},
+			groups = {cracky = 1},
+			sounds = default.node_sound_stone_defaults(),
+		})
+		stairsplus:register_all("aebase", "smooth_stone_tile", "aebase:smooth_stone_tile", {
+			description = "smooth stone tile",
+			tiles = {"xdecor_stone_tile.png"},
+			groups = {cracky = 1},
+			sounds = default.node_sound_stone_defaults(),
+		})
+		stairsplus:register_all("aebase", "smooth_desertstone_tile", "aebase:smooth_desertstone_tile", {
+			description = "smooth desert stone tile",
+			tiles = {"xdecor_desertstone_tile.png"},
+			groups = {cracky = 1},
+			sounds = default.node_sound_stone_defaults(),
+		})
+	end
 end
 
 -- Demonstration Backdrop (for displaying objects or nodes in a purely black environment)

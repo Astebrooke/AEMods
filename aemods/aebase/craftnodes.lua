@@ -28,6 +28,25 @@ minetest.register_craft({
 	}
 })
 
+-- If xdecor is installed, register crafting recipes for smooth_stone_tile variants
+if minetest.get_modpath("xdecor") then
+	minetest.register_craft({
+		type = "shaped",
+		output = "aebase:smooth_stone_tile 4",
+		recipe = {
+			{"xdecor:stone_tile","xdecor:stone_tile"},
+			{"xdecor:stone_tile","xdecor:stone_tile"},
+		}
+	})
+	minetest.register_craft({
+		type = "shaped",
+		output = "aebase:smooth_desertstone_tile 4",
+		recipe = {
+			{"xdecor:desertstone_tile","xdecor:desertstone_tile"},
+			{"xdecor:desertstone_tile","xdecor:desertstone_tile"},
+		}
+	})
+end
 -- Recipes in case the moreblocks mod is not installed
 if minetest.get_modpath("moreblocks") then
 	return
