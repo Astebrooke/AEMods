@@ -15,13 +15,13 @@ local PLAYER_FILE_SAVE_INTERVAL = 120 -- in seconds
 
 imps = {}
 
-dofile(MOD_PATH .. "/" .. "rifts.lua")
-dofile(MOD_PATH .. "/" .. "nodes.lua")
-dofile(MOD_PATH .. "/" .. "pedestals.lua")
-dofile(MOD_PATH .. "/" .. "tools.lua")
-dofile(MOD_PATH .. "/" .. "items.lua")
-dofile(MOD_PATH .. "/" .. "craftnodes.lua")
-dofile(MOD_PATH .. "/" .. "crafting.lua")
+dofile(MOD_PATH .. "/main/" .. "rifts.lua")
+dofile(MOD_PATH .. "/main/" .. "nodes.lua")
+dofile(MOD_PATH .. "/main/" .. "pedestals.lua")
+dofile(MOD_PATH .. "/main/" .. "tools.lua")
+dofile(MOD_PATH .. "/main/" .. "items.lua")
+dofile(MOD_PATH .. "/crafts/" .. "craftnodes.lua")
+dofile(MOD_PATH .. "/crafts/" .. "crafting.lua")
 
 
 -- Call worldgen for new nodes

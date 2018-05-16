@@ -13,4 +13,3 @@ local MOD_PATH = minetest.get_modpath(MOD_NAME);
 aetools = {}
 
 dofile(MOD_PATH .. "/" .. "qoltools.lua")
-dofile(MOD_PATH .. "/" .. "compat.lua")

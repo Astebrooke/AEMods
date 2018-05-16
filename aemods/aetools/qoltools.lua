@@ -49,7 +49,7 @@ end
 minetest.register_tool("aetools:sledge", {
 	description = "rock crushing hammer",
 	inventory_image = "aetools_sledge.png",
-	wield_scale = {x = 2, y = 2, z = 0.75},
+	--wield_scale = {x = 2, y = 2, z = 1},
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		max_drop_level = 1,
